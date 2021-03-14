@@ -32,11 +32,9 @@ impl Config {
             return Err("not enough arguments");
         }
 
-        Ok(
-            Config {
-                to_search: args[1].clone(),
-                filename: args[2].clone(),
-            }
-        )
+        Ok(Config {
+            to_search: args[1].clone(),
+            filename: args[2].clone(),
+        })
     }
 }
