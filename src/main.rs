@@ -5,13 +5,10 @@ use std::process;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let config = match Config::new(&args) {
-        Ok(value) => value,
-        Err(error) => {
-            println!("{}", String::from(error));
+    let config = Config::new(&args).unwrap_or_else(|err| {
+            println!("{}", String::from(err));
             process::exit(1);
-        }
-    };
+    });
 
     println!("Search for {}", config.to_search);
     println!("In file {}", config.filename);
